@@ -1,0 +1,180 @@
+/* 스캔 제어 컴포넌트 스타일 */
+.scan-controls {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.scan-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.scan-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.start-scan {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+}
+
+.start-scan:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.stop-scan {
+  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+  color: white;
+}
+
+.stop-scan:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+}
+
+.scan-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.scan-button:active:not(.disabled) {
+  transform: translateY(0);
+}
+
+.scan-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  min-height: 60px;
+}
+
+.status-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.scanning-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.robot-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #e3f2fd;
+  border-radius: 10px;
+  border-left: 4px solid #2196f3;
+}
+
+.status-label {
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.status-value {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.status-normal {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.status-scanning {
+  background: #fff3e0;
+  color: #f57c00;
+  animation: pulse 2s infinite;
+}
+
+.status-complete {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .scan-controls {
+    margin: 0 1rem;
+    padding: 1.5rem;
+  }
+
+  .scan-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .scan-button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .robot-status {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scan-controls {
+    padding: 1rem;
+  }
+
+  .scan-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .status-text {
+    font-size: 1rem;
+  }
+} 

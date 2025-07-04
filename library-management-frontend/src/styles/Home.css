@@ -1,0 +1,194 @@
+/* 메인 페이지 스타일 */
+.home-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ===== 이미지 컨테이너 스타일 ===== */
+
+/* 이미지들을 감싸는 컨테이너 */
+.image-container {
+  display: flex;                    /* Flexbox 레이아웃 사용 */
+  justify-content: center;          /* 이미지들을 가운데 정렬 */
+  gap: 2rem;                       /* 이미지들 사이의 간격 */
+  margin-bottom: 3rem;             /* 아래쪽 여백 */
+  flex-wrap: wrap;                 /* 화면이 작을 때 이미지들이 줄바꿈 */
+}
+
+/* 개별 도서관 이미지 스타일 */
+.library-image {
+  width: 200px;                    /* 이미지 너비 */
+  height: 150px;                   /* 이미지 높이 */
+  object-fit: contain;             /* 이미지가 잘리지 않도록 전체가 보이게 함 */
+  border-radius: 15px;             /* 모서리 둥글게 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  /* 그림자 효과 */
+  transition: transform 0.3s ease; /* 호버 효과 애니메이션 */
+  background-color: #f8f9fa;       /* 이미지 주변 배경색 */
+}
+
+/* ===== 이미지 표시 옵션들 (선택사항) ===== */
+
+/* 옵션 1: 이미지가 잘리지 않게 하면서 비율 유지 (현재 적용됨) */
+/* .library-image {
+  width: 200px;
+  height: auto;
+  object-fit: none;
+} */
+
+/* 이미지 호버 효과 */
+.library-image:hover {
+  transform: scale(1.05);          /* 마우스 올렸을 때 5% 확대 */
+}
+
+/* 검색 섹션 */
+.search-section {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.clear-results-button {
+  display: block;
+  margin: 1rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.clear-results-button:hover {
+  background: #ff5252;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+/* 검색 결과 섹션 */
+.search-results-section {
+  margin-bottom: 3rem;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.results-container {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.results-title {
+  margin: 0 0 2rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.book-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.no-results p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+/* 스캔 섹션 */
+.scan-section {
+  margin-bottom: 2rem;
+}
+
+/* ===== 반응형 디자인 ===== */
+
+/* 태블릿 크기 (768px 이하) */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+
+  /* 태블릿에서 이미지 컨테이너 조정 */
+  .image-container {
+    gap: 1rem;                      /* 이미지 간격 줄임 */
+    margin-bottom: 2rem;            /* 아래 여백 줄임 */
+  }
+
+  /* 태블릿에서 이미지 크기 조정 */
+  .library-image {
+    width: 150px;                   /* 너비 줄임 */
+    height: 100px;                  /* 높이 줄임 */
+  }
+
+  .book-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .results-container {
+    padding: 1rem;
+  }
+
+  .results-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* 모바일 크기 (480px 이하) */
+@media (max-width: 480px) {
+  /* 모바일에서 이미지 컨테이너 세로 배치 */
+  .image-container {
+    flex-direction: column;         /* 이미지들을 세로로 배치 */
+    align-items: center;            /* 가운데 정렬 */
+  }
+
+  /* 모바일에서 이미지 크기 조정 */
+  .library-image {
+    width: 200px;                   /* 모바일에서는 다시 크게 */
+    height: 120px;                  /* 높이는 적당히 */
+  }
+
+  .book-cards-grid {
+    margin: 0 -0.5rem;
+  }
+} 

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"> <!-- 문자 인코딩 UTF-8 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 화면 대응 -->
+    <title>도서 목록</title> <!-- 페이지 제목 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles3.css') }}"> <!-- 외부 CSS 연결 -->
+    <style>
+        /* 테이블 기본 스타일 */
+        table {
+            width: 95%; /* 테이블 너비 95% */
+            border-collapse: collapse; /* 테두리 겹치지 않게 */
+            margin: 20px 0; /* 위아래 마진 */
+        }
+        th, td {
+            padding: 10px; /* 안쪽 여백 */
+            border: 1px solid #b4b3b3; /* 연한 회색 테두리 */
+            text-align: left; /* 텍스트 왼쪽 정렬 */
+        }
+        th {
+            background-color: #000000; /* 헤더 배경 검정색 */
+            color: white; /* 글자 흰색 (추가하면 좋음) */
+        }
+        /* 상태별 배경색 및 글자색 지정 */
+        .available {
+            background-color: green !important; /* 책 있음: 초록색 배경 */
+            color: white !important; /* 흰 글자 */
+        }
+        
+        .not-available {
+            background-color: red !important; /* 책 없음: 빨간색 배경 */
+            color: white !important; /* 흰 글자 */
+        }
+        
+        .misplaced {
+            background-color: yellow !important; /* 자리 변경됨: 노란색 배경 */
+            color: black !important; /* 검정 글자 */
+        }
+        
+        .wrong-location {
+            background-color: purple !important; /* 잘못된 위치: 보라색 배경 */
+            color: white !important; /* 흰 글자 */
+        }
+    </style>
+</head>
+<body>
+    <h1>도서 목록</h1> <!-- 페이지 제목 -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>책 제목</th>
+                <th>저자</th>
+                <th>위치</th>
+                <th>청구기호</th>
+                <th>바코드</th>
+                <th>책 유무</th>
+                <th>책 이미지</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- books 리스트를 반복하여 한 권씩 행으로 출력 -->
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td> <!-- 책 제목 -->
+                <td>{{ book.author }}</td> <!-- 저자 -->
+                <td>{{ book.location }}</td> <!-- 위치 -->
+                <td>{{ book.call_number }}</td> <!-- 청구기호 -->
+                <td>{{ book.barcode }}</td> <!-- 바코드 -->
+                <td>
+                    <!-- 책 상태에 따라 다른 클래스와 텍스트 표시 -->
+                    {% if book.available %}
+                        <span class="available">책 있음</span>
+                    {% elif not book.available and not book.misplaced and not book.wrong_location %}
+                        <span class="not-available">책 없음</span>
+                    {% elif book.wrong_location %}
+                        <span class="wrong-location">위치 잘못됨</span>
+                    {% elif book.misplaced %}
+                        <span class="misplaced">순서 바뀜</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <!-- 책 이미지 출력, 너비 100px로 고정 -->
+                    <img src="{{ book.image_url }}" alt="{{ book.title }}" width="100">
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- 메인 화면으로 돌아가는 버튼 -->
+    <button class="back-button" onclick="location.href='/'">메인화면으로 돌아가기</button>
+
+</body>
+</html>
+

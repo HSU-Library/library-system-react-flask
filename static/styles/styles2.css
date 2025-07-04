@@ -1,0 +1,323 @@
+/* 전체 페이지의 기본 스타일 설정 */
+body {
+    font-family: 'Arial', sans-serif; /* 폰트 설정 */
+    background-color: #f5f5f5; /* 배경색 설정 */
+    margin: 0; /* 기본 여백 제거 */
+    padding: 20px; /* 페이지 여백 설정 */
+    color: #333; /* 기본 텍스트 색상 */
+    text-align: center; /* 텍스트를 중앙 정렬 */;
+}
+
+/* 제목(h1)의 스타일 설정 */
+h1 {
+    color: #2c3e50; /* 글자 색상 설정 */
+    font-size: 50px; /* 글자 크기 확대 */
+    font-weight: bold; /* 굵은 글씨 */
+    font-family: 'Poppins', sans-serif; /* 고급스러운 폰트 */
+    text-transform: uppercase; /* 모든 글자를 대문자로 */
+    letter-spacing: 2px; /* 글자 사이 간격 추가 */
+    margin-bottom: 30px; /* 제목 하단 여백 */
+    margin-top: 30px; /* 제목 상단 여백 (아래로 이동) */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* 제목에 그림자 효과 추가 */
+}
+
+header {
+    background-color: #3498db !important; /* 파란색 배경 */
+    padding: 40px 20px; /* 상하 40px, 좌우 20px 패딩 */
+    color: white; /* 텍스트 흰색 */
+    font-size: 2rem; /* 헤더 텍스트 크기 */
+    text-align: center; /* 중앙 정렬 */
+}
+
+
+/* 메인화면으로 돌아가기 버튼 스타일 */
+.back-button {
+    padding: 12px 24px; /* 충분한 여백을 주어 버튼 크기 키우기 */
+    font-size: 30px; /* 글자 크기 조정 */
+    font-weight: bold; /* 글자 두껍게 */
+    text-transform: uppercase; /* 대문자로 변환 */
+    border: none; /* 기본 버튼 테두리 제거 */
+    background-color: #0b63e7; /* 파란색 배경 */
+    color: white; /* 흰색 글자 */
+    border-radius: 25px; /* 둥근 모서리 */
+    cursor: pointer; /* 커서가 버튼 위에 올 때 포인터로 바뀌게 */
+    transition: background-color 0.3s, transform 0.3s; /* 배경 색상 및 크기 변화 시 부드럽게 */
+    position: absolute; /* 절대 위치 설정 */
+    top: 80px; /* 화면 상단에서 80px 아래로 */
+    right: 80px; /* 화면 오른쪽에서 80px 떨어지게 */
+}
+
+/* 버튼에 마우스를 올렸을 때 효과 */
+.back-button:hover {
+    background-color: #0410bb; /* 어두운 파란색으로 변화 */
+    transform: scale(1.1); /* 크기를 조금 키워주는 효과 */
+}
+
+/* 버튼에 클릭했을 때 효과 */
+.back-button:active {
+    background-color: #388e3c; /* 클릭했을 때 색상 */
+    transform: scale(0.95); /* 클릭 시 버튼 크기 작게 */
+}
+
+/* 버튼의 포커스 상태 (키보드로 탭하여 이동 시) */
+.back-button:focus {
+    outline: none; /* 기본 포커스 테두리 제거 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* 그림자 효과 추가 */
+}
+
+/* 개별 책장의 스타일 */
+.shelf-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px; /* 기본 가로 크기 짧게 설정 */
+    height: 180px; /* 기본 세로 크기 유지 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* 둥근 테두리 */
+    background-color: #f5f5f5; /* 배경색 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    transition: all 0.3s ease-in-out; /* 모든 속성에 부드러운 애니메이션 효과 추가 */
+    animation: fadeIn 1s ease-in-out; /* 로드 시 페이드인 */
+}
+
+/* 서서히 나타나는(fade in) 애니메이션 정의 */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* 완전히 투명한 상태에서 시작 */
+    }
+    to {
+        opacity: 1; /* 완전히 불투명한 상태로 끝남 */
+    }
+}
+
+.shelf-item:hover {
+    width: 220px; /* 가로 크기 확대 */
+    height: 220px; /* 세로 크기 확대 */
+    transform: scale(1.1); /* 전체 크기 확대 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 그림자 확대 */
+}
+
+/* 책장 항목 안의 이미지에 마우스를 올렸을 때 확대 효과 */
+.shelf-item:hover img {
+    width: 100px; /* 이미지 크기를 키움 */
+    height: auto; /* 비율 유지 */
+    transition: all 0.3s ease-in-out; /* 이미지 확대도 부드럽게 */
+}
+
+
+
+.status-summary {
+    position: absolute; /* 부모 요소를 기준으로 절대 위치 지정 */
+    top: 250px; /* 위쪽에서 250픽셀 떨어진 위치에 배치 */
+    right: 100px; /* 오른쪽에서 100픽셀 떨어진 위치에 배치 */
+    font-size: 24px; /* 큰 텍스트로 가독성 향상 */
+    font-weight: 600; /* 중간 굵기의 텍스트 */
+    background-color: #faf3e0; /* 따뜻한 크림 베이지 배경 */
+    color: #4b3a27; /* 깊이 있는 브라운 색상 */
+    padding: 25px; /* 충분한 여백으로 텍스트 공간 확보 */
+    border-radius: 20px; /* 더 부드러운 둥근 모서리 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* 깊고 은은한 그림자 */
+    border: 3px solid #d1b591; /* 고급스러운 황갈색 테두리 */
+    font-family: 'Palatino Linotype', 'Book Antiqua', serif; /* 클래식 서체 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    line-height: 1.6; /* 가독성을 높이기 위한 줄 간격 */
+    background-image: linear-gradient(to bottom, #faf3e0, #f0e3c2); /* 은은한 그라데이션 */
+}
+
+.status-summary::after {
+    content: ""; /* 가상 요소 생성, 내용은 없음 */
+    position: absolute; /* 부모 요소를 기준으로 절대 위치 지정 */
+    bottom: -30px; /* 돼지꼬리가 박스에서 떨어지도록 설정 */
+    left: -25px; /* 왼쪽 끝에 배치 */
+    width: 20px; /* 요소의 가로 길이 20픽셀 */
+    height: 20px; /* 요소의 세로 길이 20픽셀 */
+    border-radius: 50%; /* 원형 모양으로 만들기 */
+    background-color: #faf3e0; /* 배경색상과 동일 */
+    box-shadow: 0 0 0 5px #d1b591; /* 테두리 효과 */
+    transform: rotate(45deg); /* 회전 효과로 돼지꼬리 느낌 추가 */
+}
+
+.status-summary::before {
+    content: ""; /* 가상 요소 생성, 내용은 없음 */
+    position: absolute; /* 부모 요소를 기준으로 절대 위치 지정 */
+    bottom: -50px; /* 두 번째 돼지꼬리 위치 (첫 번째 꼬리 아래) */
+    left: -40px; /* 두 번째 꼬리 왼쪽 위치 */
+    width: 15px; /* 크기 작게 설정 */
+    height: 15px; /* 크기 작게 설정 */
+    border-radius: 50%; /* 원형 모양으로 만들기 */
+    background-color: #faf3e0; /* 배경색상과 동일 */
+    box-shadow: 0 0 0 4px #d1b591; /* 테두리 크기도 줄임 */
+    transform: rotate(45deg); /* 회전 효과로 돼지꼬리 느낌 추가 */
+}
+
+.status-summary p {
+    margin: 15px 0; /* 텍스트 간격 */
+    font-size: 22px; /* 텍스트 크기 */
+    font-weight: 500; /* 가독성을 위한 중간 굵기 */
+    color: #5c4a33; /* 약간 더 밝은 갈색으로 강조 */
+}
+
+.status-summary span {
+    font-weight: 700; /* 강조된 텍스트 */
+    color: #9b7847; /* 따뜻한 금빛 톤으로 포인트 */
+    text-decoration: underline; /* 강조 효과를 위해 밑줄 추가 */
+}
+
+
+
+
+
+
+
+
+.filter-buttons {
+    display: flex;
+    gap: 15px; /* 버튼 간 간격을 조금 더 넓게 */
+    justify-content: center; /* 버튼들을 컨테이너 가로 중앙에 정렬 */
+    margin-bottom: 25px; /* 버튼 아래 여백 */
+}
+
+.filter-buttons button {
+    padding: 12px 24px; /* 버튼 크기 조정 */
+    border: none; /* 버튼의 기본 테두리 제거 */
+    border-radius: 8px; /* 둥근 모서리 */
+    font-size: 16px; /* 버튼 글자 크기를 16px로 설정 */
+    font-weight: bold; /* 글자를 굵게 표시 */
+    cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경해 클릭 가능함을 표시 */
+    transition: all 0.3s ease; /* 부드러운 전환 효과 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+}
+
+ /* 호버 시 버튼 밝아지는 효과 */
+ .filter-buttons button:hover {
+    transform: translateY(-3px); /* 위로 살짝 이동 */
+    filter: brightness(1.1); /* 버튼 색상을 더 밝게 */
+}
+
+/* 눌렀을 때 살짝 눌리는 효과 */
+.filter-buttons button:active {
+    transform: translateY(1px); /* 아래로 살짝 이동 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 줄이기 */
+}
+
+
+
+.shelf-item:hover {
+    border: 2px solid #000307; /* 마우스 오버 시, 검정에 가까운 진한 회색 테두리 2px로 표시 */
+    background-color: #f8f9fa; /* 마우스 오버 시, 밝은 회색 배경색으로 변경 */
+}
+
+.shelf-group {
+    border: 2px solid #ccc; /* 네 면 모두 실선 */
+    width: 60%; /* 가로 길이를 전체 폭의 60%로 설정 */
+    margin: 0 auto 10px auto; /* 수직 간격과 가로 중앙 정렬 */
+    padding: 10px; /* 내부 여백 */
+    box-sizing: border-box; /* 테두리를 포함해 크기를 정확히 계산 */
+}
+
+/* image4 스타일 */
+#image4 {
+    width: 450px; /* 이미지 크기 설정 */
+    position: absolute; /* 절대 위치 지정 */
+    right: calc(100% - 1290px); /* 왼쪽에서 470px 떨어지도록 설정 */
+    top: 400px; /* 상단에서 50px만큼 떨어지게 설정 */
+}
+
+
+     
+
+@media screen and (max-width: 768px) {
+     .back-button {
+        font-size: 18px; /* 버튼 글자 크기 줄이기 */
+        padding: 10px 20px;
+        position: absolute; /* 절대 위치 설정 */
+    top: 90px; /* 화면 상단에서 80px 아래로 */
+    right: 10px; /* 화면 오른쪽에서 10px 떨어지게 */
+    }
+
+}
+
+/* 반응형 모바일 화면 (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px; /* 모바일에서는 여백을 줄여줍니다. */
+        text-align: left; /* 모바일에서는 텍스트 왼쪽 정렬 */
+    }
+
+    h1 {
+        font-size: 30px; /* 제목 크기를 줄여줍니다. */
+        margin-top: 20px;
+    }
+
+    header {
+        font-size: 1.5rem; /* 헤더 텍스트 크기를 작게 */
+        padding: 18px; /* 패딩 줄이기 */
+    }
+
+    .back-button {
+        font-size: 15px; /* 버튼 글자 크기 줄이기 */
+        padding: 10px 20px;
+        top: 20px; /* 화면 상단에서 위치 조정 */
+        right: 20px; /* 오른쪽 위치 조정 */
+        position: absolute; /* 절대 위치 설정 */
+    top: 90px; /* 화면 상단에서 90px 아래로 */
+    right: 15px; /* 화면 오른쪽에서 15px 떨어지게 */
+    }
+
+    .shelf-item {
+        width: 80px; /* 모바일에서는 책장의 크기를 작게 */
+        height: 150px; /* 세로 크기 줄이기 */
+        padding: 8px; /* 여백 줄이기 */
+    }
+
+    .shelf-item:hover {
+        width: 160px; /* 가로 크기 줄이기 */
+        height: 160px; /* 세로 크기 줄이기 */
+    }
+
+    .status-summary {
+        position: static; /* 위치를 일반 흐름에 따르게 설정 */
+        margin: 0 auto 20px auto;; /* 위 아래 여백 + 중앙 정렬 */
+         transform: translateY(-100px); /* 요소를 수직 방향으로 위쪽으로 100픽셀 이동시킴 */
+         top: auto; /* 필요 없음 */
+        right: auto; /* 필요 없음 */
+        font-size: 20px;
+        padding: 15px;
+        width: 60%; /* 화면 폭에 맞게 넓게 */
+        max-width: 140px; /* 최대 폭 제한 */
+    }
+    .filter-buttons {
+        gap: 10px; /* 간격 줄이기 */
+    }
+
+    .shelf-group {
+        width: 90%; /* 책장 그룹의 가로 크기를 늘림 */
+        margin: 10px auto; /* 수직 여백 추가 */
+        transform: translateY(300px); /* 책장을 20px 아래로 이동 */
+    }
+
+    /* 이미지 스타일 */
+    #image4 {
+        width: 250px; /* 이미지 크기를 모바일에 맞게 조정 */
+        right: 200px; /* 오른쪽 위치를 조정 */
+        top: 280px; /* 위치 조정 */
+    }
+
+    .status-summary::before {
+        content: ""; /* 가상 요소 내용 비움 */
+        position: absolute; /* 부모 기준 절대 위치 지정 */
+        bottom: -20px; /* 두 번째 돼지꼬리 위치 (첫 번째 꼬리 아래) */
+        left: -50px; /* 두 번째 꼬리 왼쪽 위치 */
+        width: 15px; /* 크기 작게 설정 */
+        height: 15px; /* 크기 작게 설정 */
+        border-radius: 50%; /* 둥근 원 모양 */
+        background-color: #faf3e0;
+        box-shadow: 0 0 0 4px #d1b591; /* 테두리 크기도 줄임 */
+        transform: rotate(45deg); /* 45도 회전시켜 돼지꼬리 모양 연출 */
+    }
+}
+
+
+
