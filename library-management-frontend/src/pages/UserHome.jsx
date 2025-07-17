@@ -21,7 +21,7 @@ const UserHome = () => {
   /**
    * 도서 검색 실행 함수
    * @param {string} query - 검색어
-   */
+   */ 
   const handleSearch = async (query) => {
     try {
       setIsSearching(true);
@@ -51,6 +51,16 @@ const UserHome = () => {
    */
   const handleGoToAdmin = () => {
     navigate('/admin');
+  };
+  /**
+   * 책 추천 페이지로 이동하는 함수
+   */
+  const handleRecommend = () => {
+    navigate('/recommendations');
+  };
+
+  const handleChat = () => {
+    navigate('/chat')
   };
 
   return (
@@ -152,12 +162,22 @@ const UserHome = () => {
           <div className="info-container">
             <h3>📖 도서관 이용 안내</h3>
             <div className="info-grid">
-              <div className="info-card">
-                <div className="info-icon">🔍</div>
-                <h4>빠른 검색</h4>
-                <p>책 제목이나 저자명으로 원하는 도서를 빠르게 찾을 수 있습니다.</p>
+              <div
+                className="info-card clickable"
+                onClick={handleChat}
+                role="button"
+                title="상상 Chat으로 이동"
+              >
+                <div className="info-icon">💬</div>
+                <h4>상상 Chat</h4>
+                <p>AI와 대화하며 도서를 추천받으세요.</p>
               </div>
-              <div className="info-card">
+              <div 
+                className="info-card clickable"
+                onClick={handleRecommend}
+                role="button"
+                title="책 추천 페이지로 이동"
+              >
                 <div className="info-icon">📚</div>
                 <h4>책 추천</h4>
                 <p>학생들의 책을 추천해 드립니다.</p>

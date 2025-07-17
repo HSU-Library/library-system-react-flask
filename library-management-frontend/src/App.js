@@ -4,6 +4,8 @@ import UserHome from './pages/UserHome';
 import AdminHome from './pages/AdminHome';
 import Books from './pages/Books';
 import BookShelf from './pages/BookShelf';
+import Recommendations from './pages/Recommendations';
+import Chat from './pages/Chat';
 import './App.css';
 
 /**
@@ -31,6 +33,10 @@ function App() {
           
           {/* 기본 리다이렉트 - 잘못된 경로는 사용자 메인 페이지로 */}
           <Route path="*" element={<Navigate to="/" replace />} />
+          {/* 추천 페이지*/}
+          <Route path="/recommendations" element={<Recommendations />} />
+          {/* Chat 페이지 */}
+          <Route path="/chat" element={<Chat />} /> 
         </Routes>
       </div>
     </Router>
