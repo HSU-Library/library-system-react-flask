@@ -147,7 +147,7 @@
 }
 
 
-/* 메시지 아이콘 */
+/* 메시지 아이 콘 */
 .message-icon {
   width: 24px;
   height: 24px;
@@ -166,7 +166,7 @@
   text-align: right;
 }
 .message.user .timestamp {
-  color: #ddd; 
+  color: #ddd;
 }
 /* 입력 폼 */
 .chat-form {
