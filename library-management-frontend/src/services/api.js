@@ -115,6 +115,28 @@ class ApiService {
       throw error;
     }
   }
+  static async getRecommendations() {
+    // TODO: 실제 엔드포인트가 준비되면 아래 주석 해제
+    // const response = await api.get('/recommendations');
+    // return response.data;
+
+    // 임시 목 데이터
+    return [
+      {
+        barcode: '0001',
+        title: '따라하며 쉽게 배우는 모던 리액트 완벽 입문',
+        author: '야마다 요시히로',
+        thumbnail: `/images/example1.jpg`
+      },
+      {
+        barcode: '0002',
+        title: '웹 개발자를 위한 자바스크립트의 모든 것',
+        author: 'T. J. 크라우더',
+        thumbnail: `/images/example2.jpg`
+      },
+      // 필요에 따라 샘플 도서 추가…
+    ];
+  }
 }
 
 export default ApiService; 

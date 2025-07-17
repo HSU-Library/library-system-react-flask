@@ -1,0 +1,219 @@
+:root {
+  --hsu-blue: #0b79ff;
+  --hsu-blue-dark: #0d47a1;
+  --bg-light: #f4f7fb;
+  --white: #ffffff;
+  --text-dark: #333333;
+  --assistant-bg: #e3eaf6;
+  --user-bg: #4285f4; 
+  --user-text: #ffffff;
+  --radius: 20px;
+}
+
+/* 페이지 전체 */
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--text-dark);
+  background: var(--bg-light);
+}
+
+/* 뒤로가기 */
+.chat-back-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  color: var(--hsu-blue-dark);
+  cursor: pointer;
+  transition: transform .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat-back-button:hover {
+  transform: scale(1.1);
+}
+
+/* 헤더 */
+.chat-header {
+  position: relative;
+  padding: 1.5rem 2rem;
+  background: var(--white);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.chat-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+.university-logo, .mascot-icon {
+  width: 48px;
+  height: 48px;
+}
+.chat-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--hsu-blue-dark);
+}
+.chat-header p {
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+/* 메시지 리스트 */
+.chat-main {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: var(--bg-light);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hsu-blue) var(--bg-light);
+}
+.chat-main::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-main::-webkit-scrollbar-track {
+  background: var(--bg-light);
+  border-radius: 4px;
+}
+.chat-main::-webkit-scrollbar-thumb {
+  background: var(--hsu-blue);
+  border-radius: 4px;
+}
+
+/* 메시지 컨테이너 */
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 메시지 버블 */
+.message {
+  position: relative;
+  animation: fadeIn 0.3s ease both;
+}
+
+.message-bubble {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  line-height: 1.6;
+  position: relative;
+}
+
+/* 어시스턴트 메시지 */
+.message.assistant {
+  display: flex;
+  justify-content: flex-start;
+}
+.message.assistant .message-bubble {
+  background: var(--assistant-bg);
+  border-top-left-radius: 0;
+  margin-right: auto;
+}
+
+/* 사용자 메시지 */
+.message.user {
+  display: flex;
+  justify-content: flex-end;   
+}
+.message.user .message-bubble {
+  background: var(--user-bg);
+  color: var(--user-text);
+  border-top-right-radius: 0;
+  margin-left: 0;
+}
+
+
+/* 메시지 아이콘 */
+.message-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 0.5rem;
+  vertical-align: middle;
+}
+
+/* 타임스탬프 */
+.timestamp {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.6rem;
+  color: #888;
+  text-align: right;
+}
+.message.user .timestamp {
+  color: #ddd; 
+}
+/* 입력 폼 */
+.chat-form {
+  display: flex;
+  padding: 0.75rem 1rem;
+  background: var(--white);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+.chat-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--bg-light);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  outline: none;
+  min-height: 44px;
+  transition: border-color .2s;
+}
+.chat-input:focus {
+  border-color: var(--hsu-blue);
+}
+.chat-send-button {
+  margin-left: 0.75rem;
+  padding: 0 1.2rem;
+  background: var(--hsu-blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+  min-height: 44px;
+}
+.chat-send-button:disabled {
+  background: var(--hsu-blue-dark);
+  cursor: not-allowed;
+}
+.chat-send-button:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+/* 푸터 */
+.chat-footer {
+  text-align: center;
+  padding: 0.5rem;
+  background: var(--hsu-blue-dark);
+  color: var(--white);
+  font-size: 0.85rem;
+}
