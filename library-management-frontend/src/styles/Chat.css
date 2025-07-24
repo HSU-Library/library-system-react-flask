@@ -5,7 +5,7 @@
   --white: #ffffff;
   --text-dark: #333333;
   --assistant-bg: #e3eaf6;
-  --user-bg: #4285f4; 
+  --user-bg: #4285f4;
   --user-text: #ffffff;
   --radius: 20px;
 }
@@ -28,12 +28,12 @@
   background: rgba(255, 255, 255, 0.8);
   border: none;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 1.2rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 2rem;
   color: var(--hsu-blue-dark);
   cursor: pointer;
-  transition: transform .2s;
+  transition: transform 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,7 +45,7 @@
 /* 헤더 */
 .chat-header {
   position: relative;
-  padding: 1.5rem 2rem;
+  padding: 2rem 2.5rem;
   background: var(--white);
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
@@ -56,27 +56,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-bottom: 0.5rem;
 }
-.university-logo, .mascot-icon {
-  width: 48px;
-  height: 48px;
+.university-logo,
+.mascot-icon {
+  width: 8rem;
+  height: 8rem;
 }
 .chat-header h1 {
-  font-size: 1.8rem;
+  font-size: 4rem;
   font-weight: 700;
   color: var(--hsu-blue-dark);
 }
 .chat-header p {
-  font-size: 1rem;
+  font-size: 2rem;
   color: var(--text-dark);
 }
 
 /* 메시지 리스트 */
 .chat-main {
   flex: 1;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 2rem;
   background: var(--bg-light);
   overflow-y: auto;
   scrollbar-width: thin;
@@ -98,7 +99,7 @@
 .message-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -106,8 +107,14 @@
 
 /* 애니메이션 */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 메시지 버블 */
@@ -115,11 +122,11 @@
   position: relative;
   animation: fadeIn 0.3s ease both;
 }
-
 .message-bubble {
-  padding: 0.75rem 1rem;
+  padding: 1rem 1.5rem;
   border-radius: var(--radius);
-  line-height: 1.6;
+  font-size: 2rem;
+  line-height: 1.8;
   position: relative;
 }
 
@@ -137,7 +144,7 @@
 /* 사용자 메시지 */
 .message.user {
   display: flex;
-  justify-content: flex-end;   
+  justify-content: flex-end;
 }
 .message.user .message-bubble {
   background: var(--user-bg);
@@ -146,11 +153,10 @@
   margin-left: 0;
 }
 
-
-/* 메시지 아이 콘 */
+/* 메시지 아이콘 */
 .message-icon {
-  width: 24px;
-  height: 24px;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   object-fit: cover;
   margin: 0 0.5rem;
@@ -160,46 +166,47 @@
 /* 타임스탬프 */
 .timestamp {
   display: block;
-  margin-top: 0.25rem;
-  font-size: 0.6rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
   color: #888;
   text-align: right;
 }
 .message.user .timestamp {
   color: #ddd;
 }
+
 /* 입력 폼 */
 .chat-form {
   display: flex;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1.5rem;
   background: var(--white);
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 .chat-input {
   flex: 1;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1.5rem;
   border: 2px solid var(--bg-light);
   border-radius: var(--radius);
-  font-size: 1rem;
+  font-size: 1.25rem;
   outline: none;
-  min-height: 44px;
-  transition: border-color .2s;
+  min-height: 3.5rem;
+  transition: border-color 0.2s;
 }
 .chat-input:focus {
   border-color: var(--hsu-blue);
 }
 .chat-send-button {
-  margin-left: 0.75rem;
-  padding: 0 1.2rem;
+  margin-left: 1rem;
+  padding: 1rem 2rem;
   background: var(--hsu-blue);
   color: var(--white);
   border: none;
   border-radius: var(--radius);
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background .2s, transform .2s;
-  min-height: 44px;
+  transition: background 0.2s, transform 0.2s;
+  min-height: 3.5rem;
 }
 .chat-send-button:disabled {
   background: var(--hsu-blue-dark);
@@ -212,8 +219,65 @@
 /* 푸터 */
 .chat-footer {
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.75rem;
   background: var(--hsu-blue-dark);
   color: var(--white);
-  font-size: 0.85rem;
+  font-size: 1rem;
+}
+
+/* 유도 질문 */
+.suggested-questions {
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.button-group button {
+  background: #0b79ff;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  border: none;
+  font-size: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.button-group button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(11, 121, 255, 0.3);
+}
+.chat-dropdown {
+  font-size: 1.4rem;
+  padding: 0.9rem 1.2rem;
+  border: 2px solid var(--hsu-blue);
+  border-radius: 2rem;
+  background-color: #fff;
+  color: var(--text-dark);
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 2px 8px rgba(11, 121, 255, 0.08);
+  appearance: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.chat-dropdown:focus {
+  border-color: var(--hsu-blue-dark);
+  box-shadow: 0 0 0 3px rgba(11, 121, 255, 0.2);
+  outline: none;
+}
+
+.chat-dropdown option {
+  font-size: 1.2rem;
+  padding: 0.5rem;
 }

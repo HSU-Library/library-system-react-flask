@@ -1,7 +1,7 @@
 /* 사용자 메인 페이지 스타일 */
 .user-home-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0b79ff 0%, #3181db 100%);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   position: relative;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .admin-link-button {
-  background: rgba(255, 255, 255, 0.9);
+  background: #c3cfe2;
   color: #333;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -35,6 +35,7 @@
 
 /* 사용자 헤더 */
 .user-header {
+  background: linear-gradient(135deg, #0b79ff 0%, #4919c2 100%);
   text-align: center;
   padding: 4rem 2rem 2rem;
   color: white;
@@ -61,7 +62,7 @@
 /* 메인 콘텐츠 */
 .user-main-content {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 5rem auto;
   padding: 0 2rem 4rem;
 }
 

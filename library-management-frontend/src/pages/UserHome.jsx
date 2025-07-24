@@ -79,38 +79,18 @@ const UserHome = () => {
       {/* 메인 헤더 */}
       <header className="user-header">
         <div className="header-content">
-          <h1 className="main-title">📚 도서관 검색 시스템</h1>
-          <p className="subtitle">원하는 책을 쉽고 빠르게 찾아보세요</p>
+          <h1 className="main-title">📚 한성대 학술정보관 검색 시스템</h1>
         </div>
       </header>
 
       <main className="user-main-content">
-        {/* 도서관 이미지 */}
-        <div className="library-hero">
-          <div className="hero-image">
-            <img 
-              src="/images/library-hero.jpg" 
-              alt="도서관 이미지"
-              onError={(e) => {
-                e.target.src = '/images/image1.png';
-              }}
-            />
-          </div>
-          <div className="hero-overlay">
-            <h2>지식을 찾는 여정을 시작하세요</h2>
-            <p>수많은 도서 중에서 원하는 책을 빠르게 찾아보세요</p>
-          </div>
-        </div>
 
         {/* 검색 섹션 */}
         <section className="search-section">
-          <div className="search-container">
-            <h3>도서 검색</h3>
-            <p>책 제목, 저자명으로 검색하세요</p>
             <SearchBar 
               onSearch={handleSearch}
               disabled={isSearching}
-              placeholder="책 제목 또는 저자를 입력하세요"
+              placeholder="🔍 책 제목 또는 저자를 입력하세요"
             />
             
             {/* 검색 결과 초기화 버튼 */}
@@ -122,7 +102,6 @@ const UserHome = () => {
                 검색 결과 지우기
               </button>
             )}
-          </div>
         </section>
 
         {/* 검색 결과 표시 섹션 */}
@@ -184,13 +163,8 @@ const UserHome = () => {
               </div>
               <div className="info-card">
                 <div className="info-icon">📘</div>
-                <h4>대출 안내</h4>
-                <p>대출 방법과 대출 기간을 확인해 주세요.</p>
-              </div>
-              <div className="info-card">
-                <div className="info-icon">📕</div>
-                <h4>반납 안내</h4>
-                <p>반납 방법과 반납 기간을 확인해 주세요.</p>
+                <h4>대출 / 반납 안내</h4>
+                <p>대출 / 반납 방법과 기간을 확인해 주세요.</p>
               </div>
             </div>
           </div>
