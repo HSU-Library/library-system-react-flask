@@ -22,6 +22,7 @@
   outline: none;
   height: 4rem;
   font-size: 2rem;
+  padding: 0.8rem 1rem 0.8rem 4.5rem; /* 왼쪽 패딩 증가로 아이콘과 인풋 간격 확보 */
   background: transparent; 
   color: #333;
 }
@@ -35,7 +36,20 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+.search-bar-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
 
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  font-size: 1.5rem;
+  pointer-events: none;
+}
 .search-button {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;

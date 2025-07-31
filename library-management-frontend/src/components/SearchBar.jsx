@@ -58,29 +58,37 @@ const SearchBar = ({
     setSearchQuery('');
   };
 
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+    onSearch(searchQuery);
+  };
+
   return (
     <div className="search-container">
-      {/* 검색 입력 필드 */}
-      <input
-        type="text"
-        id="searchInput"
-        className="search-input"
-        value={searchQuery}
-        onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
-        placeholder={placeholder}
-        disabled={disabled}
-      />
+      <form className="search-bar-form" onSubmit={handleSubmit}>
+        <span className="search-icon">🔍</span>      
+        {/* 검색 입력 필드 */}
+        <input
+          type="text"
+          id="searchInput"
+          className="search-input"
+          value={searchQuery}
+          onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
+          placeholder={placeholder}
+          disabled={disabled}
+        />
 
-      {/* 검색 버튼 */}
-      <button
-        className="search-button"
-        onClick={handleSearch}
-        disabled={disabled}
-      >
-        검색
-      </button>
-
+        {/* 검색 버튼 */}
+        <button
+          className="search-button"
+          onClick={handleSearch}
+          disabled={disabled}
+        >
+          검색
+        </button>
+      </form>
       {/* 검색어 초기화 버튼 */}
       {searchQuery && (
         <button

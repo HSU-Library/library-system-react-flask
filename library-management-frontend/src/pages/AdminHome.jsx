@@ -5,7 +5,7 @@ import ScanControls from '../components/ScanControls';
 import BookCard from '../components/BookCard';
 import ApiService from '../services/api';
 import '../styles/Home.css';
-
+import ChatButton from '../components/ChatButton';
 /**
  * 관리자 메인 페이지 컴포넌트
  * 도서관 관리 시스템의 관리자 화면
@@ -136,6 +136,7 @@ const AdminHome = () => {
           <ScanControls />
         </section>
       </main>
+      <ChatButton />
     </div>
   );
 };
