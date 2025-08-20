@@ -7,7 +7,7 @@ import '../styles/Header.css';
  * 모든 페이지의 상단에 표시되는 공통 헤더
  * 페이지 새로고침 기능과 네비게이션 기능을 제공
  */
-const Header = ({ title = "도서관 관리 시스템" }) => {
+const Header = ({ title = "학술정보관 관리 시스템" }) => {
   const navigate = useNavigate();
 
   /**

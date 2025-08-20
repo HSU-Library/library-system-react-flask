@@ -9,10 +9,10 @@ import '../styles/SearchBar.css';
  * @param {string} placeholder - 검색창에 표시될 플레이스홀더 텍스트
  * @param {boolean} disabled - 검색 기능 비활성화 여부
  */
-const SearchBar = ({ 
-  onSearch, 
-  placeholder = "책 이름 또는 저자를 입력하세요", 
-  disabled = false 
+const SearchBar = ({
+  onSearch,
+  placeholder = "책 이름 또는 저자를 입력하세요",
+  disabled = false
 }) => {
   // 검색어 상태 관리
   const [searchQuery, setSearchQuery] = useState('');
@@ -35,7 +35,7 @@ const SearchBar = ({
       alert('검색어를 입력하세요!');
       return;
     }
-    
+
     if (onSearch) {
       onSearch(trimmedQuery);
     }
@@ -58,31 +58,40 @@ const SearchBar = ({
     setSearchQuery('');
   };
 
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+    onSearch(searchQuery);
+  };
+
   return (
     <div className="search-container">
-      {/* 검색 입력 필드 */}
-      <input
-        type="text"
-        className="search-input"
-        value={searchQuery}
-        onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
-        placeholder={placeholder}
-        disabled={disabled}
-      />
-      
-      {/* 검색 버튼 */}
-      <button 
-        className="search-button"
-        onClick={handleSearch}
-        disabled={disabled}
-      >
-        🔍 검색
-      </button>
-      
+      <form className="search-bar-form" onSubmit={handleSubmit}>
+        <span className="search-icon">🔍</span>      
+        {/* 검색 입력 필드 */}
+        <input
+          type="text"
+          id="searchInput"
+          className="search-input"
+          value={searchQuery}
+          onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
+          placeholder={placeholder}
+          disabled={disabled}
+        />
+
+        {/* 검색 버튼 */}
+        <button
+          className="search-button"
+          onClick={handleSearch}
+          disabled={disabled}
+        >
+          검색
+        </button>
+      </form>
       {/* 검색어 초기화 버튼 */}
       {searchQuery && (
-        <button 
+        <button
           className="clear-button"
           onClick={handleClear}
           disabled={disabled}
@@ -95,4 +104,4 @@ const SearchBar = ({
   );
 };
 
-export default SearchBar; 
+export default SearchBar;
