@@ -1,1 +1,1 @@
-# library-system-fullstack
+# HSU-library-frontend
