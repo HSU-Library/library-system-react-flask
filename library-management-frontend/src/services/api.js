@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// Flask 백엔드 서버의 기본 URL 설정
-// Flask 서버가 5001번 포트에서 실행됨
-const API_BASE_URL = 'http://localhost:5001';
+// Flask 백엔드 서버 URL (.env에서 불러옴, 기본은 8000)
+const API_BASE_URL = process.env.REACT_APP_API_BASE || 'http://localhost:8000';
 
 // axios 인스턴스 생성 및 기본 설정
 const api = axios.create({
@@ -112,6 +111,28 @@ class ApiService {
       return response.data;
     } catch (error) {
       console.error('로봇 상태 설정 실패:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * 챗봇 대화 API
+   * @param {string} message - 사용자 입력 메시지
+   * @param {Array} history - 대화 기록
+   */
+  static async chat(message, history = []) {
+    try {
+      const response = await api.post('/api/chat', {
+        message,
+        history,
+      });
+      return {
+        content: response.data.answer,
+        sources: response.data.sources,
+        usage: response.data.usage,
+      };
+    } catch (error) {
+      console.error('챗봇 API 호출 실패:', error);
       throw error;
     }
   }

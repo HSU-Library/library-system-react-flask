@@ -100,26 +100,35 @@ const Chat = () => {
 
   const handleSend = async (e) => {
     e.preventDefault();
-    if (!input.trim()) return;
-
+    if (!input.trim()) return; // 공백 입력 방지
+    
+    // 1. 사용자 입력 메시지 객체 생성
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const userMsg = { role: 'user', content: input, timestamp: time };
 
+    // 2. 메시지 목록에 사용자 메시지 추가
     setMessages((prev) => [...prev, userMsg]);
     setInput('');
     setIsSending(true);
 
     try {
+      // 3. Flask API 호출 (ApiService.chat)
       const response = await ApiService.chat(input);
+
+       // 4. 응답 메시지 객체 생성
       const botTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       const assistantMsg = {
         role: 'assistant',
-        content: response.content,
+        content: response.content, // 🔹 Flask → RAG 응답
         timestamp: botTime,
       };
+
+      // 5. 메시지 목록에 봇 응답 추가
       setMessages((prev) => [...prev, assistantMsg]);
     } catch (err) {
       console.error('채팅 전송 실패:', err);
+
+      // 실패 시 에러 메시지 표시
       setMessages((prev) => [
         ...prev,
         {
