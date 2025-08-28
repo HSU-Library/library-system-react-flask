@@ -1,2 +1,0 @@
-gcc barcode_scanner.c -o scanner -ljansson -lcurl
-./scanner
